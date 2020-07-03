@@ -18,6 +18,9 @@ do_install() {
     install -m 0755    ${WORKDIR}/bt-init.sh		${D}${sysconfdir}/init.d
     install -m 0755    ${WORKDIR}/autoconnect.sh	${D}${sysconfdir}/init.d
 
+    install -d ${D}/var/lib/alsa
+    install -m 0644    ${WORKDIR}/asound.state          ${D}$/var/lib/alsa/
+
     update-rc.d -r ${D} bt-init.sh start 21 2 3 4 5 .
     update-rc.d -r ${D} autoconnect.sh start 22 2 3 4 5 .
 }
